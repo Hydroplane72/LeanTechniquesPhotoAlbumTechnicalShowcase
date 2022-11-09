@@ -10,7 +10,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
         {
 
             Console.Title = "Photo Albums";
-
+            Console.
 
             string userInput = "";
 
@@ -67,7 +67,15 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
                             {
                                 Console.Title = "Photo Albums - Photos for Album " + userInput + " Listed";
                                 Console.Clear();
-                                OutputPhotoList( photoList);
+                                if (photoList.Count >0 )
+                                {
+                                    OutputPhotoList(photoList);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("No Photos for that AlbumID");
+                                }
+                                
 
                                 Console.WriteLine();
                                 Console.WriteLine("End of list. Press any key to continue.");

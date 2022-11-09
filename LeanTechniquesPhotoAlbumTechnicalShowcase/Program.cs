@@ -10,7 +10,6 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
         {
 
             Console.Title = "Photo Albums";
-            Console.
 
             string userInput = "";
 

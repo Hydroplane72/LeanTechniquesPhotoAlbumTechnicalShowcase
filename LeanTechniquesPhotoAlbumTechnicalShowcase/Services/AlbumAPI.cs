@@ -64,7 +64,9 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
 
         #region "Constructors"
 
-
+        /// <summary>
+        /// Initializes the Rest client
+        /// </summary>
         public AlbumAPI()
         {
             const string source = mSource + "AlbumAPI()";
@@ -168,7 +170,10 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
             return photos;
         }
 
-
+        /// <summary>
+        /// Get all Albums available. Does not include photos for each album. Just the album
+        /// </summary>
+        /// <returns>List of <see cref="Album"/></returns>
         public List<Album> GetAllAlbums()
         {
 

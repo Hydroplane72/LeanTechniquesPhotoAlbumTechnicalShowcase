@@ -82,7 +82,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
 
         #region "Constructors"
 
-
+        
         public AlbumService()
         {
 
@@ -128,7 +128,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
 
                     if (mStatus.IsSuccessfull == true)
                     {
-                        //Add to collection for next time
+                        //Add to history collection for next time
                         AddPhotoListToAlbumHistory(ref photosForAlbum);
                     }
                 }
@@ -199,8 +199,6 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
 
                 if (mStatus.IsSuccessfull == true)
                 {
-                    //Restart the PhotoAlbumHistory
-
                     //Add to collection for next time
                     AddPhotoListToAlbumHistory(ref photos);
                 }
@@ -214,6 +212,10 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
             return PhotoAlbumHistory;
         }
 
+        /// <summary>
+        /// Get all Albums. Does not include photos within the albums. Just album info
+        /// </summary>
+        /// <returns>List of <see cref="Album"/></returns>
         public List<Album> GetAllAlbums()
         {
             const string source = mSource + "GetAllAlbums";
@@ -231,9 +233,8 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
 
                 if (mStatus.IsSuccessfull == true)
                 {
-                    //Restart the PhotoAlbumHistory
-
-                    //Add to collection for next time
+                    
+                    //Add to history collection for next time
                     foreach (Album album in albums)
                     {
                         if(PhotoAlbumHistory.ContainsKey(album.Id) == false)

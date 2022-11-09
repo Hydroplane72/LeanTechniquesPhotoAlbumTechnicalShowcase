@@ -13,8 +13,10 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
 
             string userInput = "";
 
+            //Loop till user says to stop
             while (true)
             {
+                //Keep this service open so we can use data from previous calls to make returns faster.
                 using (Services.AlbumService albumService = new Services.AlbumService())
                 {
                     Console.Title = "Photo Albums - Home";
@@ -26,6 +28,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
                             //No need to worry about parsing int here. Already checked that previously
                             List<Models.Album> albumList = albumService.GetAllAlbums();
 
+                            //If not successful let us know why
                             if (albumService.Status.IsSuccessfull == true)
                             {
                                 Console.Title = "Photo Albums - Show all albums available";
@@ -62,10 +65,13 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
                             //No need to worry about parsing int here. Already checked that previously
                             List<Models.Photo> photoList = albumService.GetPhotosForAlbum(int.Parse(userInput));
 
+                            //Make sure we had no issues
                             if (albumService.Status.IsSuccessfull == true)
                             {
                                 Console.Title = "Photo Albums - Photos for Album " + userInput + " Listed";
                                 Console.Clear();
+                                
+                                //Start listing out all of the photos for the album
                                 if (photoList.Count >0 )
                                 {
                                     OutputPhotoList(photoList);
@@ -94,10 +100,13 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
                             //No need to worry about parsing int here. Already checked that previously
                             Dictionary<int, Dictionary<int, Photo>> albumPhotoList = albumService.GetAllAlbumsAndPhotos();
 
+                            //Make sure we had no issues
                             if (albumService.Status.IsSuccessfull == true)
                             {
                                 Console.Title = "Photo Albums - Show All Photos grouped by Album";
                                 Console.Clear();
+
+                                //Start listing out all photos for each album
                                 foreach (Dictionary<int, Photo> photos in albumPhotoList.Values)
                                 {
                                     OutputPhotoList(new List<Photo>(photos.Values));
@@ -152,6 +161,10 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
             }
         }
 
+        /// <summary>
+        /// Ask for an albumID from user. User must enter a valid integer for them to continue.
+        /// </summary>
+        /// <returns>A valid numeric integer for an AlbumID</returns>
         private static string AskForAlbumID()
         {
             string userInput = "";
@@ -197,6 +210,10 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
             return userInput;
         }
 
+        /// <summary>
+        /// Ask the user the route from the home screen they wish to take. 
+        /// </summary>
+        /// <returns>Return a valid choice only. Valid choices (1,2,3, or 4)</returns>
         private static string AskUserForDirections()
         {
             string userInput = "";
@@ -213,8 +230,6 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
                 try
                 {
 
-
-
                     userInput = Console.ReadLine();
 
                     //Make sure is a valid string
@@ -224,6 +239,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
                     }
                     else if (userInput.Equals("1") == true || userInput.Equals("2") == true || userInput.Equals("3") == true || userInput.Equals("4") == true)
                     {
+                        //Is a valid choice return choice
                         return userInput;
                     }
                     else

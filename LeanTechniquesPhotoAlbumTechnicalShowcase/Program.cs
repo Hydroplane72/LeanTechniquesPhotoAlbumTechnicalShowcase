@@ -9,62 +9,8 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
         static void Main(string[] args)
         {
 
+            Console.Title = "Photo Albums";
 
-            /*TODO: Thoughts
-             * Need to ask if they already know the album they would like
-             * 1) Look up by name of photo?
-             * 2) Look up by id
-             * 3) Show options
-             * 4) Show all albums and photos
-             * 
-             * GetAllPhotosFromURL
-             * Order Photos into albums
-             *  Output Albums (in order)
-             *      Output Photos (in order) by album
-             *      
-             *      
-             *Classes and packages probably needed
-             *  Classes and services:
-             *      Program - Service
-             *          Starting thread.
-             *          Controls general flow of program
-             *              Ask user first question
-             *              Show to user results
-             *              Wait for user responsed before close
-             *      CommonHelper - Service
-             *          Cleanup
-             *          Logging
-             *      Photo - Class
-             *          albumid
-             *          id
-             *          title
-             *          url
-             *          thumbnail
-             *      PhotosAPIClient - Service
-             *          Contains the calls that I will need to get the photos from the API and return them in a list
-             *              Get by ID
-             *              Get by name?
-             *              Filter by ID and Name?
-             *              Get all
-             *              Returns list or dictionary<string, dictionary<string, photo>>? (dictionary<albumId, dictionary<photoID, photo>>)
-             *      PhotoAlbumService - Service
-             *          Main worker
-             *          Deals with PhotosAPIClient and getting data from them
-             *          Deals with organizing data returned to us by api.
-             *          Returns to Program the Dictionary Collection returned.
-             *          IF at any point in time the user asks for a full download of data. The data will be stored in this class
-             *          
-             *              
-             *      PhotoAlbumServiceTester - Unit testing
-             *          Test PhotoAlbumServiceFunctions
-             *
-             * Packages:
-             * RestSharp
-             * Newtonsoft
-             *
-             *      
-             *      
-             */
 
             string userInput = "";
 
@@ -72,6 +18,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
             {
                 using (Services.AlbumService albumService = new Services.AlbumService())
                 {
+                    Console.Title = "Photo Albums - Home";
                     userInput = AskUserForDirections();
 
                     switch (userInput)
@@ -82,6 +29,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
 
                             if (albumService.Status.IsSuccessfull == true)
                             {
+                                Console.Title = "Photo Albums - Show all albums available";
                                 Console.Clear();
                                 Console.WriteLine("Below is a full list of all albums available");
                                 foreach (Album album in albumList)
@@ -104,6 +52,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
                             break;
 
                         case "2":
+                            Console.Title = "Photo Albums - Select Album ID";
                             userInput = AskForAlbumID();
 
                             if (userInput == "-1")
@@ -116,6 +65,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
 
                             if (albumService.Status.IsSuccessfull == true)
                             {
+                                Console.Title = "Photo Albums - Photos for Album " + userInput + " Listed";
                                 Console.Clear();
                                 OutputPhotoList( photoList);
 
@@ -139,6 +89,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
 
                             if (albumService.Status.IsSuccessfull == true)
                             {
+                                Console.Title = "Photo Albums - Show All Photos grouped by Album";
                                 Console.Clear();
                                 foreach (Dictionary<int, Photo> photos in albumPhotoList.Values)
                                 {

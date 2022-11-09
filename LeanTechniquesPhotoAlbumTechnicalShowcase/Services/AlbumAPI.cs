@@ -9,7 +9,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
     /// <summary>
     /// Connects the the API and gets info for Albums and photos
     /// </summary>
-    internal class AlbumAPI : IDisposable
+    public class AlbumAPI : IDisposable
     {
 
         #region "IDisposable"
@@ -20,7 +20,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-        protected virtual void Dispose(bool disposing)
+        public virtual void Dispose(bool disposing)
         {
             if (_disposed)
             {
@@ -55,7 +55,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
         #region "Properties"
         private readonly Status mStatus = new Status(true);
 
-        internal Status Status
+        public Status Status
         {
             get { return mStatus; }
         }
@@ -65,7 +65,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
         #region "Constructors"
 
 
-        internal AlbumAPI()
+        public AlbumAPI()
         {
             const string source = mSource + "AlbumAPI()";
 
@@ -91,7 +91,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
         /// </summary>
         /// <param name="pAlbumID"></param>
         /// <returns>List of Photos for that Album</returns>
-        internal List<Models.Photo> GetPhotosByAlbumID(int pAlbumID)
+        public List<Models.Photo> GetPhotosByAlbumID(int pAlbumID)
         {
             const string source = mSource + "GetPhotosByAlbumID(string pAlbumID)";
 
@@ -132,7 +132,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
         /// Gets all photos no matter the AlbumID
         /// </summary>
         /// <returns>The entire list of photos available by the endpoint</returns>
-        internal List<Photo> GetAllPhotos()
+        public List<Photo> GetAllPhotos()
         {
 
             const string source = mSource + "GetAllPhotos()";
@@ -169,7 +169,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
         }
 
 
-        internal List<Album> GetAllAlbums()
+        public List<Album> GetAllAlbums()
         {
 
             const string source = mSource + "GetAllAlbums()";

@@ -112,7 +112,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase
                                 break;
                             }
                             //No need to worry about parsing int here. Already checked that previously
-                            List<Models.Photo> photoList = albumService.PhotosForAlbum(int.Parse(userInput));
+                            List<Models.Photo> photoList = albumService.GetPhotosForAlbum(int.Parse(userInput));
 
                             if (albumService.Status.IsSuccessfull == true)
                             {

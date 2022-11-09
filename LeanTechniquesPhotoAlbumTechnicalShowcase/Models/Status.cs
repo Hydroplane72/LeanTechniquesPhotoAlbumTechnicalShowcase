@@ -9,7 +9,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Models
     /// <summary>
     /// Used throughout to detirmine the state of happenings in mostly services. Provides ability to allow the program to error and continue still.
     /// </summary>
-    internal class Status
+    public class Status
     {
         public Status(bool pDefaultStatus)
         {
@@ -39,7 +39,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Models
             mLastError = pErrorMessage;
         }
 
-        internal string GetErrors()
+        public string GetErrors()
         {
             StringBuilder sb = new StringBuilder();
 

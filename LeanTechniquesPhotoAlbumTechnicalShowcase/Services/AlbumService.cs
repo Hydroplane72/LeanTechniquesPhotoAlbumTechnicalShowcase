@@ -16,7 +16,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
     /// Remember to check <see cref="Status"/> after each all in this object to make sure no errors were hit.
     /// </para>
     /// </summary>
-    internal class AlbumService : IDisposable
+    public class AlbumService : IDisposable
     {
 
         #region "IDisposable"
@@ -27,7 +27,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-        protected virtual void Dispose(bool disposing)
+        public virtual void Dispose(bool disposing)
         {
             if (_disposed)
             {
@@ -65,7 +65,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
         #region "Properties"
         private  Status mStatus = new Status(true);
 
-        internal Status Status
+        public Status Status
         {
             get { return mStatus; }
         }
@@ -77,13 +77,13 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
         /// Since there is no need to search the list of photos at this time I have the photos as a list. 
         /// If I need to ever search the photos by ID then I will want to make a dictionary as well.</para>
         /// </summary>
-        internal Dictionary<int, Dictionary<int, Photo>> PhotoAlbumHistory = new Dictionary<int, Dictionary<int, Photo>>();
+        public Dictionary<int, Dictionary<int, Photo>> PhotoAlbumHistory = new Dictionary<int, Dictionary<int, Photo>>();
         #endregion
 
         #region "Constructors"
 
 
-        internal AlbumService()
+        public AlbumService()
         {
 
         }
@@ -97,11 +97,11 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
         /// </summary>
         /// <param name="pAlbumID"></param>
         /// <returns></returns>
-        internal List<Photo> PhotosForAlbum(int pAlbumID)
+        public List<Photo> GetPhotosForAlbum(int pAlbumID)
         {
             List<Photo> photosForAlbum = new List<Photo>();
 
-            const string source = mSource + "PhotosForAlbum(string pAlbumID)";
+            const string source = mSource + "GetPhotosForAlbum(string pAlbumID)";
 
             try
             {
@@ -182,7 +182,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
         /// Returns all Photos and Albums
         /// </summary>
         /// <returns>Fills this object out then returns. <seealso cref="PhotoAlbumHistory"/></returns>
-        internal Dictionary<int, Dictionary<int,Photo>> GetAllAlbumsAndPhotos()
+        public Dictionary<int, Dictionary<int,Photo>> GetAllAlbumsAndPhotos()
         {
             const string source = mSource + "GetAllAlbumsAndPhotos";
 
@@ -214,7 +214,7 @@ namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Services
             return PhotoAlbumHistory;
         }
 
-        internal List<Album> GetAllAlbums()
+        public List<Album> GetAllAlbums()
         {
             const string source = mSource + "GetAllAlbums";
 

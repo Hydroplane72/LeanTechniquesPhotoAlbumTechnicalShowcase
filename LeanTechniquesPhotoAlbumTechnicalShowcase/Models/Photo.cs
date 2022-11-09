@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeanTechniquesPhotoAlbumTechnicalShowcase.Models
 {
-    internal class Photo
+    public class Photo
     {
         public int Id { get; set; }
 
